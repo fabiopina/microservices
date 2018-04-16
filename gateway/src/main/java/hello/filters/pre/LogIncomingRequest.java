@@ -7,10 +7,11 @@ import com.netflix.zuul.ZuulFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import hello.filters.HttpRequest;
+
 public class LogIncomingRequest extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(LogIncomingRequest.class);
-    //MessageSaver logger = new MessageSaver("ENTER");
 
     // returns a String that stands for the type of the filter---in this case, pre, or it could be route for a routing filter.
     @Override
@@ -36,10 +37,8 @@ public class LogIncomingRequest extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
-        //logger.write(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-
         log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-        //System.out.println(request.getRemoteAddr());
+        HttpRequest.post("INCOMING", String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
         return null;
     }
