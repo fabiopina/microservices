@@ -23,6 +23,7 @@ def create_token(body):
 
     payload = {'email': body['email'], 'password': body['password']}
 
+    logging.debug("{authentication_controller} %s", USERS_MS)
     r = requests.post(USERS_MS + '/login', json=payload)
     if r.status_code == requests.codes.ok:
         token_info = {

@@ -1,0 +1,17 @@
+swagger: '2.0'
+info:
+  title: Log_Server
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      operationId: application.hello_world
+      summary: "Hello World!"
+      tags: [Log_Server]
+      responses:
+        200:
+          description: OK
