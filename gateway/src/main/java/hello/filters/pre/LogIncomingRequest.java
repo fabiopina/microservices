@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 
 import hello.filters.HttpRequest;
 
+import java.sql.Timestamp;
+
 public class LogIncomingRequest extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(LogIncomingRequest.class);
@@ -37,8 +39,10 @@ public class LogIncomingRequest extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
         log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-        HttpRequest.post("INCOMING", String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
+        HttpRequest.post(timestamp.toString(), "INCOMING", String.format("FROM-> %s TO-> %s METHOD-> %s", request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod()));
 
         return null;
     }

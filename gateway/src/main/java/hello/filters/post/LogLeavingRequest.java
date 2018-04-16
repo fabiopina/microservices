@@ -4,8 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.ZuulFilter;
 
+import hello.filters.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.sql.Timestamp;
 
 public class LogLeavingRequest extends ZuulFilter {
 
@@ -35,8 +38,11 @@ public class LogLeavingRequest extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
         log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
         System.out.println(request.getRemoteAddr());
+        HttpRequest.post(timestamp.toString(), "LEAVING", String.format("FROM-> %s TO-> %s METHOD-> %s", request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod()));
 
         return null;
     }

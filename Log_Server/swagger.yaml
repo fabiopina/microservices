@@ -42,9 +42,14 @@ definitions:
   Log:
     type: "object"
     required:
+    - "timestamp"
     - "status"
     - "message"
     properties:
+      timestamp:
+        type: "string"
+        example: "10-03-2018"
+        description: "Timestamp"
       status:
         type: "string"
         example: "INCOMING"

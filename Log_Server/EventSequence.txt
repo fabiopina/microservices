@@ -1,0 +1,2 @@
+2018-04-16 23:13:59.085 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users METHOD-> GET
+2018-04-16 23:14:01.119 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users METHOD-> GET
