@@ -16,8 +16,12 @@ def create_playlist(body):
     if body['name'] is '' or body['user_id'] is '':
         return RESP.response_400(message='A given parameter is empty!')
 
-    playlist = CRUD.create_playlist(body['name'], body['user_id'])
-    CRUD.commit()
+    try:
+        playlist = CRUD.create_playlist(body['name'], body['user_id'])
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     if playlist is None:
         return RESP.response_500(message='Error adding playlist into database!')
@@ -36,13 +40,20 @@ def update_playlist(id, body):
     if body['name'] is '':
         return RESP.response_400(message='The name parameter is empty!')
 
-    playlist = CRUD.read_playlist_by_id(id)
+    try:
+        playlist = CRUD.read_playlist_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if playlist is None:
         return RESP.response_404(message='Playlist not found!')
 
-    CRUD.update_playlist(playlist, name=body['name'])
-    CRUD.commit()
+    try:
+        CRUD.update_playlist(playlist, name=body['name'])
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='Playlist updated with success!')
 
@@ -55,7 +66,10 @@ def get_playlist(id):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    playlist = CRUD.read_playlist_by_id(id)
+    try:
+        playlist = CRUD.read_playlist_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if playlist is None:
         return RESP.response_404(message='Playlist not found!')
@@ -71,7 +85,10 @@ def delete_playlist(id):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    playlist = CRUD.read_playlist_by_id(id)
+    try:
+        playlist = CRUD.read_playlist_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if playlist is None:
         return RESP.response_404(message='Playlist not found!')
@@ -87,7 +104,7 @@ def delete_playlist(id):
         CRUD.commit()
     except Exception:
         CRUD.rollback()
-        RESP.response_500(message='An error has occurred')
+        RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='Playlist deleted with success')
 
@@ -100,7 +117,10 @@ def get_user_playlists(user_id):
     if user_id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    playlists = CRUD.read_all_user_playlists(user_id)
+    try:
+        playlists = CRUD.read_all_user_playlists(user_id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     array = []
 
@@ -118,7 +138,10 @@ def add_song_to_playlist(id, song_id, user_id):
     if id is '' or song_id is '' or user_id is '':
         return RESP.response_400(message='A given parameter is empty')
 
-    playlist = CRUD.read_playlist_by_id(id)
+    try:
+        playlist = CRUD.read_playlist_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if playlist is None:
         return RESP.response_404(message='Playlist not found!')
@@ -128,8 +151,12 @@ def add_song_to_playlist(id, song_id, user_id):
 
     # TODO: Check if song exists by sending a request into the Songs Microservice
 
-    CRUD.create_song_in_playlist(id, song_id)
-    CRUD.commit()
+    try:
+        CRUD.create_song_in_playlist(id, song_id)
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='Song added into playlist with success!')
 
@@ -142,7 +169,10 @@ def delete_song_from_playlist(id, song_id, user_id):
     if id is '' or song_id is '' or user_id is '':
         return RESP.response_400(message='A given parameter is empty')
 
-    playlist = CRUD.read_playlist_by_id(id)
+    try:
+        playlist = CRUD.read_playlist_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if playlist is None:
         return RESP.response_404(message='Playlist not found!')
@@ -150,13 +180,20 @@ def delete_song_from_playlist(id, song_id, user_id):
     if playlist.user_id != user_id:
         return RESP.response_400(message='This playlist belongs to another user')
 
-    playlist_song = CRUD.read_song_from_playlist(id, song_id)
+    try:
+        playlist_song = CRUD.read_song_from_playlist(id, song_id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if playlist_song is None:
         return RESP.response_404(message='Song not found is playlist')
 
-    CRUD.delete_object(playlist_song)
-    CRUD.commit()
+    try:
+        CRUD.delete_object(playlist_song)
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='Song removed from playlist with success')
 
@@ -169,12 +206,18 @@ def get_playlist_songs(id):
     if id is '':
         return RESP.response_400(message='A given parameter is empty')
 
-    playlist = CRUD.read_playlist_by_id(id)
+    try:
+        playlist = CRUD.read_playlist_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if playlist is None:
         return RESP.response_404(message='Playlist not found!')
 
-    songs = CRUD.read_songs_from_playlist(id)
+    try:
+        songs = CRUD.read_songs_from_playlist(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     array = []
 

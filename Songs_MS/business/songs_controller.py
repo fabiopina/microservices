@@ -16,8 +16,12 @@ def create_song(body):
     if body['title'] is '' or body['artist'] is '' or body['album'] is '' or body['release_year'] is '' or body['path'] is '' or body['user_id'] is '':
         return RESP.response_400(message='A given parameter is empty!')
 
-    song = CRUD.create_song(body['title'], body['artist'], body['album'], body['release_year'], body['path'], body['user_id'])
-    CRUD.commit()
+    try:
+        song = CRUD.create_song(body['title'], body['artist'], body['album'], body['release_year'], body['path'], body['user_id'])
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     if song is None:
         return RESP.response_500(message='Error adding song into database!')
@@ -33,7 +37,10 @@ def read_song(id):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    song = CRUD.read_song_by_song_id(id)
+    try:
+        song = CRUD.read_song_by_song_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if song is None:
         return RESP.response_404(message='Song not found!')
@@ -46,7 +53,10 @@ def read_songs_criteria(expression):
     """ Returns a list of songs given an expression"""
     logging.debug("{songs_controller} BEGIN function read_song_criteria()")
 
-    songs = CRUD.read_songs_by_criteria(expression)
+    try:
+        songs = CRUD.read_songs_by_criteria(expression)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     array = []
 
@@ -65,13 +75,20 @@ def update_song(id, body):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    song = CRUD.read_song_by_song_id(id)
+    try:
+        song = CRUD.read_song_by_song_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if song is None:
         return RESP.response_404(message='Song not found!')
 
-    CRUD.update_song(song, body['title'], body['artist'], body['album'], body['release_year'], body['path'])
-    CRUD.commit()
+    try:
+        CRUD.update_song(song, body['title'], body['artist'], body['album'], body['release_year'], body['path'])
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='Song updated with success!')
 
@@ -84,13 +101,20 @@ def delete_song(id):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    song = CRUD.read_song_by_song_id(id)
+    try:
+        song = CRUD.read_song_by_song_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if song is None:
         return RESP.response_404(message='Song not found!')
 
-    CRUD.delete_song(song)
-    CRUD.commit()
+    try:
+        CRUD.delete_song(song)
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='Song deleted with success')
 
@@ -103,7 +127,10 @@ def convert_song(id):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    song = CRUD.read_song_by_song_id(id)
+    try:
+        song = CRUD.read_song_by_song_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if song is None:
         return RESP.response_404(message='Song not found!')

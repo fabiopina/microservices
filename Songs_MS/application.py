@@ -1,10 +1,6 @@
 import connexion as connexion
 from business.songs_controller import *
-from CRUD.ORM import db, create_database
-
-
-# Logging configuration
-logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
+from CRUD.ORM import db
 
 
 app = connexion.App(__name__)
@@ -18,5 +14,4 @@ def shutdown_session(exception=None):
 
 
 if __name__ == '__main__':
-    create_database()
     app.run(port=5001, debug=True)

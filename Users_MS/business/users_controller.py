@@ -16,11 +16,18 @@ def create_user(body):
     if body['name'] is '' or body['email'] is '' or body['password'] is '':
         return RESP.response_400(message='A given parameter is empty!')
 
-    if CRUD.read_user_by_email(body['email']) is not None:
-        return RESP.response_409(message='The given email is already in use!')
+    try:
+        if CRUD.read_user_by_email(body['email']) is not None:
+            return RESP.response_409(message='The given email is already in use!')
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
-    user = CRUD.create_user(body['name'], body['email'], UTILS.hash_password(body['password']))
-    CRUD.commit()
+    try:
+        user = CRUD.create_user(body['name'], body['email'], UTILS.hash_password(body['password']))
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     if user is None:
         return RESP.response_500(message='Error adding user into database!')
@@ -36,7 +43,10 @@ def read_user(email):
     if email is '':
         return RESP.response_400(message='The email parameter is empty!')
 
-    user = CRUD.read_user_by_email_not_deleted(email)
+    try:
+        user = CRUD.read_user_by_email_not_deleted(email)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if user is None:
         return RESP.response_404(message='User not found!')
@@ -53,18 +63,28 @@ def update_user(id, body):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    user = CRUD.read_user_by_id(id)
+    try:
+        user = CRUD.read_user_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if user is None:
         return RESP.response_404(message='User not found!')
 
-    if body['email'] is not '' and body['email'] != user.email:
-        user_email = CRUD.read_user_by_email(body['email'])
-        if user_email is not None:
-            return RESP.response_409(message='The given email is already in use!')
+    try:
+        if body['email'] is not '' and body['email'] != user.email:
+            user_email = CRUD.read_user_by_email(body['email'])
+            if user_email is not None:
+                return RESP.response_409(message='The given email is already in use!')
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
-    CRUD.update_user(user, body['name'], body['email'], UTILS.hash_password(body['password']))
-    CRUD.commit()
+    try:
+        CRUD.update_user(user, body['name'], body['email'], UTILS.hash_password(body['password']))
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='User updated with success!')
 
@@ -77,13 +97,20 @@ def delete_user(id):
     if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
-    user = CRUD.read_user_by_id(id)
+    try:
+        user = CRUD.read_user_by_id(id)
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if user is None:
         return RESP.response_404(message='User not found!')
 
-    CRUD.delete_user(user)
-    CRUD.commit()
+    try:
+        CRUD.delete_user(user)
+        CRUD.commit()
+    except Exception:
+        CRUD.rollback()
+        return RESP.response_500(message='Database is down!')
 
     return RESP.response_200(message='User deleted with success')
 
@@ -95,7 +122,10 @@ def check_login(body):
     if body['email'] is '' or body['password'] is '':
         return RESP.response_400(message='A given parameter is empty!')
 
-    user = CRUD.read_user_by_email_not_deleted(body['email'])
+    try:
+        user = CRUD.read_user_by_email_not_deleted(body['email'])
+    except Exception:
+        return RESP.response_500(message='Database is down!')
 
     if user is None:
         return RESP.response_400(message='Bad login!')
