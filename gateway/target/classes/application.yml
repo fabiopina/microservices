@@ -1,0 +1,29 @@
+server:
+  port: 4000
+
+zuul:
+  routes:
+    users:
+      serviceId: users-service
+      path: /users-ms/**
+      url: http://localhost:5000
+      sensitiveHeaders:
+    songs:
+      serviceId: songs-service
+      path: /songs-ms/**
+      url: http://localhost:5001
+      sensitiveHeaders:
+    playlists:
+      serviceId: playlists-service
+      path: /playlists-ms/**
+      url: http://localhost:5002
+      sensitiveHeaders:
+    authentication:
+      serviceId: authentication-service
+      path: /auth-ms/**
+      url: http://localhost:5003
+      sensitiveHeaders:
+
+ribbon:
+  eureka:
+    enabled: false

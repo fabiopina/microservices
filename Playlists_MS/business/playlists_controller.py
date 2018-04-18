@@ -1,7 +1,12 @@
 import logging
+import os
+import requests
 import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
+from flask import request
 from business.auth import requires_auth
+
+SONGS_MS = "http://" + os.environ['SONGSADDRESS']
 
 
 def hello_world():
@@ -149,7 +154,15 @@ def add_song_to_playlist(id, song_id, user_id):
     if playlist.user_id != user_id:
         return RESP.response_400(message='This playlist belongs to another user')
 
-    # TODO: Check if song exists by sending a request into the Songs Microservice
+    # Checks if song exists by sending a request into the Songs Microservice
+    headers = {'Content-Type': 'application/json',
+               'Authorization': request.headers['Authorization']}
+    param = {'id': song_id}
+    r = requests.get(SONGS_MS + '/songs', params=param, headers=headers)
+    if r.status_code == 404:
+        return RESP.response_404(message='Song not found!')
+    if r.status_code == 500:
+        return RESP.response_500(message='Songs_MS is down!')
 
     try:
         CRUD.create_song_in_playlist(id, song_id)

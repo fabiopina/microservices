@@ -5,7 +5,6 @@ import json
 import jwt
 import os
 
-# USERS_MS = 'http://0.0.0.0:5000'
 USERS_MS = "http://" + os.environ['USERSADDRESS']
 TOKEN_SECRET = 'secret'     # FIND WAY TO KEEP THIS SAFE!
 ALGORITHM = 'HS256'
@@ -34,5 +33,7 @@ def create_token(body):
 
         token = jwt.encode(token_info, TOKEN_SECRET, algorithm=ALGORITHM)
         return RESP.response_200(message={'token': token.decode('utf-8')})
+    if r.status_code == 500:
+        return RESP.response_500(message='Users_MS is down!')
 
     return RESP.response_400(message='Credentials are incorrect!')

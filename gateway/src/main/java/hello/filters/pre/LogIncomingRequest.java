@@ -40,6 +40,7 @@ public class LogIncomingRequest extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println(request.getHeader("Authorization"));
 
         log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
         HttpRequest.post(timestamp.toString(), "INCOMING", String.format("FROM-> %s TO-> %s METHOD-> %s", request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod()));
