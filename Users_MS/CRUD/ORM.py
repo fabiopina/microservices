@@ -24,6 +24,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%s:%s@%s/%s' % (USER, P
 # db is now our orm manager
 db = SQLAlchemy(app)
 
+from CRUD.entities import User
+
 logging.debug("{ORM} Connecting into database ...")
 while True:
     try:

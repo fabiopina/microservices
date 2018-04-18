@@ -117,7 +117,7 @@ def delete_user(id):
 
 def check_login(body):
     """ Checks the login parameters"""
-    logging.debug("{users_controller} BEGIN function delete_user()")
+    logging.debug("{users_controller} BEGIN function check_login()")
 
     if body['email'] is '' or body['password'] is '':
         return RESP.response_400(message='A given parameter is empty!')

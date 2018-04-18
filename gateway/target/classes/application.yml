@@ -6,22 +6,22 @@ zuul:
     users:
       serviceId: users-service
       path: /users-ms/**
-      url: http://localhost:5000
+      url: http://172.18.0.3:5000
       sensitiveHeaders:
     songs:
       serviceId: songs-service
       path: /songs-ms/**
-      url: http://localhost:5001
+      url: http://172.18.0.4:5001
       sensitiveHeaders:
     playlists:
       serviceId: playlists-service
       path: /playlists-ms/**
-      url: http://localhost:5002
+      url: http://172.18.0.6:5002
       sensitiveHeaders:
     authentication:
       serviceId: authentication-service
       path: /auth-ms/**
-      url: http://localhost:5003
+      url: http://172.18.0.5:5003
       sensitiveHeaders:
 
 ribbon:

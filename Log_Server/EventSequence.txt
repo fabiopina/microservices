@@ -1,4 +1,12 @@
-2018-04-17 16:17:42.636 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth/login METHOD-> POST
-2018-04-17 16:17:42.655 [INCOMING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/users/login METHOD-> POST
-2018-04-17 16:17:42.674 [LEAVING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/users/login METHOD-> POST
-2018-04-17 16:17:42.681 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth/login METHOD-> POST
+2018-04-18 18:10:08.75 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/playlists-ms/playlists/songs/1 METHOD-> POST
+2018-04-18 18:10:08.766 [INCOMING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/songs-ms/songs METHOD-> GET
+2018-04-18 18:10:08.779 [LEAVING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/songs-ms/songs METHOD-> GET
+2018-04-18 18:10:08.798 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/playlists-ms/playlists/songs/1 METHOD-> POST
+2018-04-18 18:14:20.151 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/playlists-ms/playlists/songs/1 METHOD-> POST
+2018-04-18 18:14:20.222 [INCOMING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/songs-ms/songs METHOD-> GET
+2018-04-18 18:14:20.262 [LEAVING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/songs-ms/songs METHOD-> GET
+2018-04-18 18:14:20.285 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/playlists-ms/playlists/songs/1 METHOD-> POST
+2018-04-18 18:15:31.527 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/playlists-ms/playlists/songs/1 METHOD-> POST
+2018-04-18 18:15:31.594 [INCOMING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/songs-ms/songs METHOD-> GET
+2018-04-18 18:15:31.638 [LEAVING] FROM-> 172.18.0.6 TO-> http://10.0.2.15:4000/songs-ms/songs METHOD-> GET
+2018-04-18 18:15:31.668 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/playlists-ms/playlists/songs/1 METHOD-> POST

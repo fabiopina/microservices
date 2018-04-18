@@ -1,47 +1,44 @@
 version: "3"
 services:
-  ms_db:
-    # replace username/repo:tag with your name and image details
+  ms-db:
     image: mariadb
     expose:
       - "3306"
     environment:
       - MYSQL_ROOT_PASSWORD=ribeiro
-  users_ms:
-    # replace username/repo:tag with your name and image details
-    image: fabiopina151/users_ms
+  users-ms:
+    image: users-ms
     expose:
       - "5000"
     links:
-      - ms_db
+      - ms-db
     environment:
-      - DATABASEADDRESS=ms_db:3306
-  songs_ms:
-    # replace username/repo:tag with your name and image details
-    image: fabiopina151/songs_ms
+      - DATABASEADDRESS=ms-db:3306
+  songs-ms:
+    image: songs-ms
     expose:
       - "5001"
     links:
-      - ms_db
+      - ms-db
     environment:
-      - DATABASEADDRESS=ms_db:3306
-  playlists_ms:
-    # replace username/repo:tag with your name and image details
-    image: fabiopina151/playlists_ms
+      - DATABASEADDRESS=ms-db:3306
+  playlists-ms:
+    image: playlists-ms
     expose:
       - "5002"
     links:
-      - ms_db
+      - ms-db
+      - songs-ms
     environment:
-      - DATABASEADDRESS=ms_db:3306
-  authentication_ms:
-    # replace username/repo:tag with your name and image details
-    image: fabiopina151/auth_ms
+      - DATABASEADDRESS=ms-db:3306
+      - SONGSADDRESS=10.0.2.15:4000/songs-ms
+  authentication-ms:
+    image: auth-ms
     expose:
       - "5003"
     links:
-      - users_ms
+      - users-ms
     environment:
-      - USERSADDRESS=10.0.2.15:4000/users
+      - USERSADDRESS=10.0.2.15:4000/users-ms
 
 

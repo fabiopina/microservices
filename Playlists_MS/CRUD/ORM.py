@@ -25,6 +25,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%s:%s@%s/%s' % (USER, P
 # db is now our orm manager
 db = SQLAlchemy(app)
 
+from CRUD.entities import Playlist_Song, Playlist
+
 logging.debug("{ORM} Connecting into database ...")
 while True:
     try:

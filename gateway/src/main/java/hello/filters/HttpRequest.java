@@ -13,7 +13,9 @@ public class HttpRequest {
 
     public static void post(String timestamp, String status, String message) {
         HttpClient client = HttpClientBuilder.create().build();
-        HttpPost post = new HttpPost("http://localhost:4040/log");
+
+        String logServer =  System.getenv("LOGSERVERADDRESS");
+        HttpPost post = new HttpPost("http://"+logServer+"/log");
 
         String payload = "{" +
                 "\"timestamp\": \""+timestamp+"\", " +

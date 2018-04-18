@@ -40,8 +40,7 @@ public class LogLeavingRequest extends ZuulFilter {
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-        log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-        System.out.println(request.getRemoteAddr());
+        log.info(String.format("FROM-> %s TO-> %s METHOD-> %s", request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod()));
         HttpRequest.post(timestamp.toString(), "LEAVING", String.format("FROM-> %s TO-> %s METHOD-> %s", request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod()));
 
         return null;
