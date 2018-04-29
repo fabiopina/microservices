@@ -42,19 +42,9 @@ definitions:
   Log:
     type: "object"
     required:
-    - "timestamp"
-    - "status"
     - "message"
     properties:
-      timestamp:
-        type: "string"
-        example: "10-03-2018"
-        description: "Timestamp"
-      status:
-        type: "string"
-        example: "INCOMING"
-        description: "Status"
       message:
         type: "string"
-        example: "123456"
-        description: "Message"
+        example: "2018-04-27 11:22:14.196 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/ METHOD-> GET"
+        description: "Log message"

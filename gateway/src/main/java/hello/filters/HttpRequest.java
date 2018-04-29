@@ -11,17 +11,13 @@ import java.io.IOException;
 
 public class HttpRequest {
 
-    public static void post(String timestamp, String status, String message) {
+    public static void post(String message) {
         HttpClient client = HttpClientBuilder.create().build();
 
         String logServer =  System.getenv("LOGSERVERADDRESS");
         HttpPost post = new HttpPost("http://"+logServer+"/log");
 
-        String payload = "{" +
-                "\"timestamp\": \""+timestamp+"\", " +
-                "\"status\": \""+status+"\", " +
-                "\"message\": \""+message+"\"" +
-                "}";
+        String payload = "{\"message\": \""+message+"\"}";
 
         try {
             StringEntity postingString = new StringEntity(payload);

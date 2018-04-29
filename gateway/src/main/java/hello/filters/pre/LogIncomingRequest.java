@@ -40,9 +40,10 @@ public class LogIncomingRequest extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String message = String.format("%s [INCOMING] FROM-> %s TO-> %s METHOD-> %s", timestamp.toString(), request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod());
 
-        log.info(String.format("FROM-> %s TO-> %s METHOD-> %s", request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod()));
-        HttpRequest.post(timestamp.toString(), "INCOMING", String.format("FROM-> %s TO-> %s METHOD-> %s", request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod()));
+        log.info(message);
+        HttpRequest.post(message);
 
         return null;
     }
