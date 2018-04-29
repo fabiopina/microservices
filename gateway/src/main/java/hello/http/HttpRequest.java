@@ -1,4 +1,4 @@
-package hello.filters;
+package hello.http;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
