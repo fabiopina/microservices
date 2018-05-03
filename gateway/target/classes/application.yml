@@ -16,12 +16,12 @@ zuul:
     playlists:
       serviceId: playlists-service
       path: /playlists-ms/**
-      url: http://172.18.0.5:5002
+      url: http://172.18.0.6:5002
       sensitiveHeaders:
     authentication:
       serviceId: authentication-service
       path: /auth-ms/**
-      url: http://172.18.0.6:5003
+      url: http://172.18.0.5:5003
       sensitiveHeaders:
 
 ribbon:
