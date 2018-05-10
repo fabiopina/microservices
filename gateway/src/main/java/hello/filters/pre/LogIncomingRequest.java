@@ -7,16 +7,16 @@ import com.netflix.zuul.ZuulFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import hello.http.Queue;
+import hello.http.RequestQueue;
 
 import java.sql.Timestamp;
 
 public class LogIncomingRequest extends ZuulFilter {
 
-    private Queue queue;
+    private RequestQueue queue;
     private static Logger log = LoggerFactory.getLogger(LogIncomingRequest.class);
 
-    public LogIncomingRequest(Queue q) {
+    public LogIncomingRequest(RequestQueue q) {
         queue = q;
     }
 
@@ -45,7 +45,7 @@ public class LogIncomingRequest extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String message = String.format("%s [INCOMING] FROM-> %s TO-> %s METHOD-> %s", timestamp.toString(), request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod());
+        String message = String.format("%s %s %s %s %s %s", timestamp.toString(), request.getMethod(), "INCOMING", request.getRemoteAddr(), request.getRequestURL().toString(), request.getRemotePort());
 
         log.info(message);
         queue.add(message);

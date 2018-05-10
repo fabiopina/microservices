@@ -1,32 +1,28 @@
-2018-04-30 00:44:50.012 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms METHOD-> GET
-2018-04-30 00:44:50.018 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms METHOD-> GET
-2018-04-30 00:44:50.038 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms METHOD-> GET
-2018-04-30 00:44:50.046 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms METHOD-> GET
-2018-04-30 00:46:27.251 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 00:46:27.256 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 00:46:27.248 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 00:46:27.263 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 00:49:28.716 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:49:28.722 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:52:11.836 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:52:11.841 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:55:07.751 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:55:07.782 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:56:05.84 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:56:05.856 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> POST
-2018-04-30 00:58:04.833 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 00:58:04.842 [INCOMING] FROM-> 172.18.0.5 TO-> http://10.0.2.15:4000/users-ms/login METHOD-> POST
-2018-04-30 00:58:04.86 [LEAVING] FROM-> 172.18.0.5 TO-> http://10.0.2.15:4000/users-ms/login METHOD-> POST
-2018-04-30 00:58:04.863 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 01:07:10.384 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 01:07:10.403 [INCOMING] FROM-> 172.18.0.5 TO-> http://10.0.2.15:4000/users-ms/login METHOD-> POST
-2018-04-30 01:07:10.439 [LEAVING] FROM-> 172.18.0.5 TO-> http://10.0.2.15:4000/users-ms/login METHOD-> POST
-2018-04-30 01:07:10.444 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 01:07:10.488 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> GET
-2018-04-30 01:07:10.492 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> GET
-2018-04-30 01:08:00.207 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 01:08:00.213 [INCOMING] FROM-> 172.18.0.5 TO-> http://10.0.2.15:4000/users-ms/login METHOD-> POST
-2018-04-30 01:08:00.223 [LEAVING] FROM-> 172.18.0.5 TO-> http://10.0.2.15:4000/users-ms/login METHOD-> POST
-2018-04-30 01:08:00.237 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/auth-ms/login METHOD-> POST
-2018-04-30 01:08:00.245 [INCOMING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> GET
-2018-04-30 01:08:00.286 [LEAVING] FROM-> 127.0.0.1 TO-> http://localhost:4000/users-ms/users METHOD-> GET
+2018-05-10 22:38:38.671 GET INCOMING 127.0.0.1 http://localhost:4000/users-ms/ 48738
+2018-05-10 22:38:38.671 GET INCOMING 127.0.0.1 http://localhost:4000/users-ms/ 48740
+2018-05-10 22:38:38.679 GET LEAVING 127.0.0.1 http://localhost:4000/users-ms/ 48738
+2018-05-10 22:38:38.679 GET LEAVING 127.0.0.1 http://localhost:4000/users-ms/ 48740
+2018-05-10 22:39:55.889 POST INCOMING 127.0.0.1 http://localhost:4000/auth-ms/login 48762
+2018-05-10 22:39:55.923 POST INCOMING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42484
+2018-05-10 22:39:55.935 POST LEAVING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42484
+2018-05-10 22:39:55.939 POST LEAVING 127.0.0.1 http://localhost:4000/auth-ms/login 48762
+2018-05-10 22:39:59.524 POST INCOMING 127.0.0.1 http://localhost:4000/auth-ms/login 48778
+2018-05-10 22:39:59.531 POST INCOMING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42500
+2018-05-10 22:39:59.541 POST LEAVING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42500
+2018-05-10 22:39:59.558 POST LEAVING 127.0.0.1 http://localhost:4000/auth-ms/login 48778
+2018-05-10 22:40:00.431 POST INCOMING 127.0.0.1 http://localhost:4000/auth-ms/login 48794
+2018-05-10 22:40:00.438 POST INCOMING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42516
+2018-05-10 22:40:00.459 POST LEAVING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42516
+2018-05-10 22:40:00.48 POST LEAVING 127.0.0.1 http://localhost:4000/auth-ms/login 48794
+2018-05-10 22:40:17.001 POST INCOMING 127.0.0.1 http://localhost:4000/auth-ms/login 48812
+2018-05-10 22:40:17.001 POST INCOMING 127.0.0.1 http://localhost:4000/auth-ms/login 48814
+2018-05-10 22:40:17.003 POST INCOMING 127.0.0.1 http://localhost:4000/auth-ms/login 48816
+2018-05-10 22:40:17.008 POST INCOMING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42542
+2018-05-10 22:40:17.019 POST LEAVING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42542
+2018-05-10 22:40:17.037 POST INCOMING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42550
+2018-05-10 22:40:17.043 POST LEAVING 127.0.0.1 http://localhost:4000/auth-ms/login 48812
+2018-05-10 22:40:17.045 POST INCOMING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42556
+2018-05-10 22:40:17.049 POST LEAVING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42550
+2018-05-10 22:40:17.066 POST LEAVING 127.0.0.1 http://localhost:4000/auth-ms/login 48814
+2018-05-10 22:40:17.071 POST LEAVING 172.18.0.6 http://10.0.2.15:4000/users-ms/login 42556
+2018-05-10 22:40:17.073 POST LEAVING 127.0.0.1 http://localhost:4000/auth-ms/login 48816

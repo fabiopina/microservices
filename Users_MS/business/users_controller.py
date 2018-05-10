@@ -122,6 +122,7 @@ def check_login(body):
     if body['email'] is '' or body['password'] is '':
         return RESP.response_400(message='A given parameter is empty!')
 
+    user = CRUD.read_user_by_email_not_deleted(body['email'])
     try:
         user = CRUD.read_user_by_email_not_deleted(body['email'])
     except Exception:

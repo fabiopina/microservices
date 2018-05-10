@@ -1,18 +1,17 @@
 package hello;
 
-import hello.http.Queue;
+import hello.http.RequestQueue;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import hello.filters.pre.LogIncomingRequest;
 import hello.filters.post.LogLeavingRequest;
-import hello.http.Queue;
 
 @EnableZuulProxy
 @SpringBootApplication
 public class GatewayApplication {
-  static Queue q = new Queue();
+  static RequestQueue q = new RequestQueue();
 
   public static void main(String[] args) {
     q.start();

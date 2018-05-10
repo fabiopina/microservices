@@ -12,4 +12,4 @@ application = app.app
 
 
 if __name__ == '__main__':
-    app.run(port=5003, debug=True)
+    app.run(port=5003, threaded=True, debug=True)

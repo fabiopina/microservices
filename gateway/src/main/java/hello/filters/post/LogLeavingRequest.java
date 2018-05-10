@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.ZuulFilter;
 
-import hello.http.Queue;
+import hello.http.RequestQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,10 +12,10 @@ import java.sql.Timestamp;
 
 public class LogLeavingRequest extends ZuulFilter {
 
-    private Queue queue;
+    private RequestQueue queue;
     private static Logger log = LoggerFactory.getLogger(LogLeavingRequest.class);
 
-    public LogLeavingRequest(Queue q) {
+    public LogLeavingRequest(RequestQueue q) {
         queue = q;
     }
 
@@ -44,7 +44,7 @@ public class LogLeavingRequest extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String message = String.format("%s [LEAVING] FROM-> %s TO-> %s METHOD-> %s", timestamp.toString(), request.getRemoteAddr(), request.getRequestURL().toString(), request.getMethod());
+        String message = String.format("%s %s %s %s %s %s", timestamp.toString(), request.getMethod(), "LEAVING", request.getRemoteAddr(), request.getRequestURL().toString(), request.getRemotePort());
 
         log.info(message);
         queue.add(message);
