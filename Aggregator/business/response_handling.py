@@ -27,6 +27,14 @@ def response_400(message=None, code=400):
     return message, code
 
 
+# 401
+# Authentication has failed or has not yet been provided.
+def response_401(message=None, code=401):
+    if message is None:
+        message = {'message': 'Unauthorized'}
+    return message, code
+
+
 # 404
 # The server has not found anything.
 def response_404(message=None, code=404):
