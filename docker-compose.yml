@@ -32,7 +32,7 @@ services:
     environment:
       - DATABASEADDRESS=ms-db:3306
       - SONGSADDRESS=10.0.2.15:4000/songs-ms
-  authentication-ms:
+  auth-ms:
     image: auth-ms
     expose:
       - "5003"
@@ -40,5 +40,19 @@ services:
       - users-ms
     environment:
       - USERSADDRESS=10.0.2.15:4000/users-ms
+  aggr-ms:
+    image: aggr-ms
+    expose:
+      - "5004"
+    links:
+      - users-ms
+      - playlists-ms
+      - songs-ms
+      - auth-ms
+    environment:
+      - USERSADDRESS=10.0.2.15:4000/users-ms
+      - PLAYLISTSADDRESS=10.0.2.15:4000/playlists-ms
+      - SONGSADDRESS=10.0.2.15:4000/songs-ms
+      - AUTHADDRESS=10.0.2.15:4000/auth-ms
 
 
