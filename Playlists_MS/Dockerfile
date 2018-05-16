@@ -14,9 +14,13 @@ RUN pip install -r requirements.txt
 EXPOSE 80
 
 # Define environment variable
-ENV DATABASEADDRESS localhost:3306
-
+ENV DATABASEADDRESS 10.0.2.15:3306
 ENV PYTHONPATH /app/
+ENV EUREKA_SERVICE_URL = http://10.0.2.15:8761/eureka/
+ENV EUREKA_INSTANCE_IP_ADDRESS = 10.0.2.15
+ENV EUREKA_INSTANCE_HOSTNAME = 10.0.2.15
+ENV EUREKA_INSTANCE_PORT = 5002
+
 
 # Run app.py when the container launches
 CMD ["python", "application.py"]

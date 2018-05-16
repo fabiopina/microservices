@@ -4,9 +4,11 @@ FROM openjdk:8-jdk-alpine
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
-ADD /target/EurekaServer.jar EurekaServer.jar
+ADD /target/ZuulGateway.jar ZuulGateway.jar
 
 # Define environment variable
-ENV PORT 8761
+ENV PORT 4000
+ENV LOGSERVERADDRESS 10.0.2.15:4040
+ENV EUREKA 10.0.2.15:8761
 
-ENTRYPOINT ["java","-jar","EurekaServer.jar"]
+ENTRYPOINT ["java","-jar","ZuulGateway.jar"]

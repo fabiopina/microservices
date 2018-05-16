@@ -1,58 +1,16 @@
 version: "3"
 services:
-  ms-db:
-    image: mariadb
+  eureka:
+    image: eureka-server
     expose:
-      - "3306"
+      - "8761"
     environment:
-      - MYSQL_ROOT_PASSWORD=ribeiro
-  users-ms:
-    image: users-ms
+      - PORT=8761
+  zuul:
+    image: zuul-gateway
     expose:
-      - "5000"
-    links:
-      - ms-db
+      - "4000"
     environment:
-      - DATABASEADDRESS=ms-db:3306
-  songs-ms:
-    image: songs-ms
-    expose:
-      - "5001"
-    links:
-      - ms-db
-    environment:
-      - DATABASEADDRESS=ms-db:3306
-  playlists-ms:
-    image: playlists-ms
-    expose:
-      - "5002"
-    links:
-      - ms-db
-      - songs-ms
-    environment:
-      - DATABASEADDRESS=ms-db:3306
-      - SONGSADDRESS=10.0.2.15:4000/songs-ms
-  auth-ms:
-    image: auth-ms
-    expose:
-      - "5003"
-    links:
-      - users-ms
-    environment:
-      - USERSADDRESS=10.0.2.15:4000/users-ms
-  aggr-ms:
-    image: aggr-ms
-    expose:
-      - "5004"
-    links:
-      - users-ms
-      - playlists-ms
-      - songs-ms
-      - auth-ms
-    environment:
-      - USERSADDRESS=10.0.2.15:4000/users-ms
-      - PLAYLISTSADDRESS=10.0.2.15:4000/playlists-ms
-      - SONGSADDRESS=10.0.2.15:4000/songs-ms
-      - AUTHADDRESS=10.0.2.15:4000/auth-ms
-
-
+      - PORT=4000
+      - LOGSERVERADDRESS=10.0.2.15:4040
+      - EUREKA=eureka:8761
