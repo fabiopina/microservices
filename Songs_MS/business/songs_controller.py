@@ -3,10 +3,11 @@ import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 from business.auth import requires_auth
 from pydub import AudioSegment
+import os
 
 
 def hello_world():
-    return RESP.response_200(message='Songs_MS working!')
+    return RESP.response_200(message='Songs_MS working! -> Port: ' + os.environ['EUREKA_INSTANCE_PORT'])
 
 
 @requires_auth

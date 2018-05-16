@@ -21,7 +21,7 @@ public class RequestQueue {
                 try{
                     while (true) {
                         String element = requestQueue.take();
-                        //HttpRequest.post(element);
+                        HttpRequest.post(element);
                     }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();

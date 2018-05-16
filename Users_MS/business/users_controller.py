@@ -1,4 +1,5 @@
 import logging
+import os
 import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 import business.utils as UTILS
@@ -6,7 +7,7 @@ from business.auth import requires_auth
 
 
 def hello_world():
-    return RESP.response_200(message='Users_MS working!')
+    return RESP.response_200(message='Users_MS working! -> Port: ' + os.environ['EUREKA_INSTANCE_PORT'])
 
 
 def create_user(body):

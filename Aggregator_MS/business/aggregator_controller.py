@@ -13,7 +13,7 @@ AUTH_MS = "http://" + os.environ['AUTHADDRESS']
 
 
 def hello_world():
-    return RESP.response_200(message='Aggregator_MS working!')
+    return RESP.response_200(message='Aggregator_MS working! -> Port: ' + os.environ['EUREKA_INSTANCE_PORT'])
 
 
 @requires_auth

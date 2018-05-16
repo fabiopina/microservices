@@ -11,7 +11,7 @@ ALGORITHM = 'HS256'
 
 
 def hello_world():
-    return RESP.response_200(message='Authentication_MS working! -> ' + os.environ['EUREKA_INSTANCE_PORT'])
+    return RESP.response_200(message='Authentication_MS working! -> Port: ' + os.environ['EUREKA_INSTANCE_PORT'])
 
 
 def create_token(body):
