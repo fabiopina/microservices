@@ -266,7 +266,6 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <envs>
         <env name="LOGSERVERADDRESS" value="10.0.2.15:4040" />
-        <env name="PORT" value="4000" />
         <env name="EUREKA" value="10.0.2.15:8761" />
       </envs>
     </configuration>

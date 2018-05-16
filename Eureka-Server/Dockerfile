@@ -6,7 +6,4 @@ EXPOSE 80
 
 ADD /target/EurekaServer.jar EurekaServer.jar
 
-# Define environment variable
-ENV PORT 8761
-
 ENTRYPOINT ["java","-jar","EurekaServer.jar"]
