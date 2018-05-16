@@ -14,3 +14,21 @@ services:
       - PORT=4000
       - LOGSERVERADDRESS=10.0.2.15:4040
       - EUREKA=eureka:8761
+  ms-db:
+    image: mariadb
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=ribeiro
+  users:
+    image: users-ms
+    expose:
+      - "5000"
+    links:
+      - ms-db
+    environment:
+      - DATABASEADDRESS=ms-db:3306
+      - EUREKA_SERVICE_URL=eureka:8761
+      - EUREKA_INSTANCE_IP_ADDRESS=users
+      - EUREKA_INSTANCE_HOSTNAME=users
+      - EUREKA_INSTANCE_PORT=5000

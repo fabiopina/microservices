@@ -209,7 +209,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DATABASEADDRESS" value="localhost:6000" />
-        <env name="EUREKA_SERVICE_URL" value="http://localhost:8761/eureka/" />
+        <env name="EUREKA_SERVICE_URL" value="localhost:8761" />
         <env name="EUREKA_INSTANCE_IP_ADDRESS" value="10.0.2.15" />
         <env name="EUREKA_INSTANCE_HOSTNAME" value="localhost" />
         <env name="EUREKA_INSTANCE_PORT" value="5001" />
