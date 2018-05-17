@@ -8,6 +8,8 @@ services:
     image: zuul-gateway
     expose:
       - "4000"
+    links:
+      - eureka
     environment:
       - LOGSERVERADDRESS=10.0.2.15:4040
       - EUREKA=eureka:8761
@@ -23,6 +25,7 @@ services:
       - "5000"
     links:
       - ms-db
+      - eureka
     environment:
       - DATABASEADDRESS=ms-db:3306
       - EUREKA_SERVICE_URL=eureka:8761
@@ -33,6 +36,7 @@ services:
       - "5001"
     links:
       - ms-db
+      - eureka
     environment:
       - DATABASEADDRESS=ms-db:3306
       - EUREKA_SERVICE_URL=eureka:8761
@@ -43,10 +47,11 @@ services:
       - "5002"
     links:
       - ms-db
-      - songs
+      - zuul
+      - eureka
     environment:
       - DATABASEADDRESS=ms-db:3306
-      - SONGSADDRESS=songs:4000/songs-ms
+      - SONGSADDRESS=zuul:4000/songs-ms
       - EUREKA_SERVICE_URL=eureka:8761
       - EUREKA_INSTANCE_PORT=5002
   auth:
@@ -54,9 +59,10 @@ services:
     expose:
       - "5003"
     links:
-      - users
+      - eureka
+      - zuul
     environment:
-      - USERSADDRESS=users:4000/users-ms
+      - USERSADDRESS=zuul:4000/users-ms
       - EUREKA_SERVICE_URL=eureka:8761
       - EUREKA_INSTANCE_PORT=5003
   aggr:
@@ -64,15 +70,13 @@ services:
     expose:
       - "5004"
     links:
-      - users
-      - playlists
-      - songs
-      - auth
+      - eureka
+      - zuul
     environment:
-      - USERSADDRESS=users:4000/users-ms
-      - PLAYLISTSADDRESS=playlists:4000/playlists-ms
-      - SONGSADDRESS=songs:4000/songs-ms
-      - AUTHADDRESS=auth:4000/auth-ms
+      - USERSADDRESS=zuul:4000/users-ms
+      - PLAYLISTSADDRESS=zuul:4000/playlists-ms
+      - SONGSADDRESS=zuul:4000/songs-ms
+      - AUTHADDRESS=zuul:4000/auth-ms
       - EUREKA_SERVICE_URL=eureka:8761
       - EUREKA_INSTANCE_PORT=5004
 

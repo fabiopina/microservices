@@ -20,7 +20,9 @@ for row in list_file:
                 row_again[6] = 'YES'
                 break
 
-
+for row in result:
+    for i in row:
+        print(i)
 
 
 
