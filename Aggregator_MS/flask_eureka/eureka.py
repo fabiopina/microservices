@@ -3,13 +3,12 @@ import time
 from .eurekaclient import EurekaClient
 
 
-def register_service(name=None, vip_address=None, secure_vip_address=None, host_name=None):
+def register_service(name=None):
     """
     Register service with eureka service
     """
 
-    eureka_client = EurekaClient(name=name, vip_address=vip_address,
-                                 secure_vip_address=secure_vip_address, host_name=host_name)
+    eureka_client = EurekaClient(name=name)
 
     while True:
         try:

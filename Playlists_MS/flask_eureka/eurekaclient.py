@@ -97,12 +97,13 @@ class EurekaClient(object):
         host_info = HostInfo().get()
         self.eureka_url = 'http://' + self.eureka_url_temp + '/eureka/'
         self.ip_address = socket.gethostbyname(socket.gethostname())
+        self.host_name = socket.gethostname()
 
-        self.vip_address = vip_address
+        self.vip_address = name
         if not self.vip_address:
             self.vip_address = host_info['IPv4']
 
-        self.secure_vip_address = secure_vip_address
+        self.secure_vip_address = name
         if not self.secure_vip_address:
             self.secure_vip_address = host_info['IPv4']
 
