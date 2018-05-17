@@ -26,6 +26,53 @@ services:
     environment:
       - DATABASEADDRESS=ms-db:3306
       - EUREKA_SERVICE_URL=eureka:8761
-      - EUREKA_INSTANCE_IP_ADDRESS=users
-      - EUREKA_INSTANCE_HOSTNAME=users
       - EUREKA_INSTANCE_PORT=5000
+  songs:
+    image: songs-ms
+    expose:
+      - "5001"
+    links:
+      - ms-db
+    environment:
+      - DATABASEADDRESS=ms-db:3306
+      - EUREKA_SERVICE_URL=eureka:8761
+      - EUREKA_INSTANCE_PORT=5001
+  playlists:
+    image: playlists-ms
+    expose:
+      - "5002"
+    links:
+      - ms-db
+      - songs
+    environment:
+      - DATABASEADDRESS=ms-db:3306
+      - SONGSADDRESS=songs:4000/songs-ms
+      - EUREKA_SERVICE_URL=eureka:8761
+      - EUREKA_INSTANCE_PORT=5002
+  auth:
+    image: auth-ms
+    expose:
+      - "5003"
+    links:
+      - users
+    environment:
+      - USERSADDRESS=users:4000/users-ms
+      - EUREKA_SERVICE_URL=eureka:8761
+      - EUREKA_INSTANCE_PORT=5003
+  aggr:
+    image: aggr-ms
+    expose:
+      - "5004"
+    links:
+      - users
+      - playlists
+      - songs
+      - auth
+    environment:
+      - USERSADDRESS=users:4000/users-ms
+      - PLAYLISTSADDRESS=playlists:4000/playlists-ms
+      - SONGSADDRESS=songs:4000/songs-ms
+      - AUTHADDRESS=auth:4000/auth-ms
+      - EUREKA_SERVICE_URL=eureka:8761
+      - EUREKA_INSTANCE_PORT=5004
+

@@ -15,6 +15,7 @@ except ImportError:
     from urlparse import urljoin
 
 import dns.resolver
+import socket
 
 from .ec2metadata import get_metadata
 from .httpclient import HttpClientObject, ApiException
@@ -95,6 +96,7 @@ class EurekaClient(object):
 
         host_info = HostInfo().get()
         self.eureka_url = 'http://' + self.eureka_url_temp + '/eureka/'
+        self.ip_address = socket.gethostbyname(socket.gethostname())
 
         self.vip_address = vip_address
         if not self.vip_address:

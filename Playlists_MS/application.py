@@ -7,7 +7,7 @@ from flask_eureka.eureka import register_service
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
-register_service(name="playlists-ms", vip_address="playlists-ms", secure_vip_address="playlists-ms")
+register_service(name="playlists-ms", vip_address="playlists-ms", secure_vip_address="playlists-ms", host_name="playlists")
 
 app = connexion.App(__name__)
 app.add_api('swagger.yaml')
