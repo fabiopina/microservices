@@ -4,6 +4,7 @@ import requests
 import json
 import jwt
 import os
+import socket
 
 USERS_MS = "http://" + os.environ['USERSADDRESS']
 TOKEN_SECRET = 'secret'     # FIND WAY TO KEEP THIS SAFE!
@@ -11,7 +12,7 @@ ALGORITHM = 'HS256'
 
 
 def hello_world():
-    return RESP.response_200(message='Authentication_MS working! -> Port: ' + os.environ['EUREKA_INSTANCE_PORT'])
+    return RESP.response_200(message='Authentication_MS working! -> Host: ' + socket.gethostname())
 
 
 def create_token(body):

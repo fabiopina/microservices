@@ -5,6 +5,7 @@ import os
 import json
 from business.auth import requires_auth
 from flask import request
+import socket
 
 USERS_MS = "http://" + os.environ['USERSADDRESS']
 SONGS_MS = "http://" + os.environ['SONGSADDRESS']
@@ -13,7 +14,7 @@ AUTH_MS = "http://" + os.environ['AUTHADDRESS']
 
 
 def hello_world():
-    return RESP.response_200(message='Aggregator_MS working! -> Port: ' + os.environ['EUREKA_INSTANCE_PORT'])
+    return RESP.response_200(message='Aggregator_MS working! -> Host: ' + socket.gethostname())
 
 
 @requires_auth

@@ -5,13 +5,13 @@ import CRUD.CRUD_operations as CRUD
 import business.response_handling as RESP
 from flask import request
 from business.auth import requires_auth
-import os
+import socket
 
 SONGS_MS = "http://" + os.environ['SONGSADDRESS']
 
 
 def hello_world():
-    return RESP.response_200(message='Playlists_MS working! -> Port: ' + os.environ['EUREKA_INSTANCE_PORT'])
+    return RESP.response_200(message='Playlists_MS working! -> Host: ' + socket.gethostname())
 
 
 @requires_auth
