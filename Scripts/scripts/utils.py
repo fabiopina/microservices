@@ -12,22 +12,25 @@ def get_date(string):
     return dt
 
 
-def get_microservice(string):
-    """ Breaks a partial log string into its microservice"""
-    """ Input: http://localhost:4000/auth-ms"""
-    """ Output: auth-ms -> string"""
-    # 1st word: http -- 2nd word: //localhost -- 3rd word:  4000/auth-ms/......
-    words = string.split(":")
-    # Always need second word here!
-    return words[2].split("/")[1]
-
-
 def is_the_response_request(first_list, second_list):
-    """ List input example: [datetime.datetime(2018, 5, 10, 22, 38, 38, 671000), 'GET', 'INCOMING', '127.0.0.1',
-    'http://localhost:4000/users-ms/', '48738', 'NO']"""
-    if second_list[2] == 'LEAVING' and second_list[1] == first_list[1] and second_list[3] == first_list[3] and second_list[4] == first_list[4] and second_list[5] == first_list[5]:
+    """ List input example: [datetime.datetime(2018, 5, 26, 15, 2, 52, 3000), 'INCOMING', 'GET', '172.18.0.1', '38802',
+                                        'http://172.18.0.5:4000/aggr-ms/playlists/songs/1', 'null', 'null', 'NO']"""
+    if second_list[1] == 'LEAVING' and second_list[2] == first_list[2] and second_list[3] == first_list[3] and second_list[4] == first_list[4] and second_list[5] == first_list[5]:
         return True
     return False
+
+
+def get_function(method, url):
+    """ Method example: GET
+        URL example: http://zuul:4000/playlists-ms/playlists/songs/1"""
+    words = url.split(':')
+    return method + " -> " + words[2][5:]
+
+
+def get_instance(uri):
+    """ Input: http://55e6783ec759:5002/playlists/songs/1"""
+    words = uri.split('/')
+    return words[2]
 
 
 

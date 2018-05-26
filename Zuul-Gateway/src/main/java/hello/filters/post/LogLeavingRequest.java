@@ -48,13 +48,12 @@ public class LogLeavingRequest extends ZuulFilter {
         // 2nd -> Type
         // 3rd -> Method
         // 4th -> Client ip address
-        // 5th -> Client hostname
-        // 6th -> Client port
-        // 7th -> URL used by client
-        // 8th -> Microservice called
-        // 9th -> Microservice instance called
+        // 5th -> Client port
+        // 6th -> URL used by client
+        // 7th -> Microservice called
+        // 8th -> Microservice instance called
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String message = String.format("%s %s %s %s %s %s %s %s %s", timestamp.toString(), "LEAVING", request.getMethod(), request.getRemoteAddr(), ctx.getZuulRequestHeaders().get("x-forwarded-host"), request.getRemotePort(), request.getRequestURL().toString(), ctx.getZuulRequestHeaders().get("x-forwarded-prefix"), ((IResponse) ctx.get("ribbonResponse")).getRequestedURI());
+        String message = String.format("%s %s %s %s %s %s %s %s", timestamp.toString(), "LEAVING", request.getMethod(), request.getRemoteAddr(), request.getRemotePort(), request.getRequestURL().toString(), ctx.getZuulRequestHeaders().get("x-forwarded-prefix"), ((IResponse) ctx.get("ribbonResponse")).getRequestedURI());
 
         log.info(message);
         queue.add(message);
