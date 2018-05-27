@@ -1,6 +1,7 @@
 import logging
 import business.response_handling as RESP
 import requests
+import multiprocessing
 import os
 import json
 from business.auth import requires_auth
@@ -14,6 +15,14 @@ AUTH_MS = "http://" + os.environ['AUTHADDRESS']
 
 
 def hello_world():
+    stuff_that_needs_getting = [1, 2, 3]
+
+    pool = multiprocessing.Pool(processes=3)
+    pool_outputs = pool.map(get_song, stuff_that_needs_getting)
+    pool.close()
+    pool.join()
+    print(pool_outputs)
+
     return RESP.response_200(message='Aggregator_MS working! -> Host: ' + socket.gethostname())
 
 
@@ -42,14 +51,27 @@ def get_playlist_songs_info(id):
 
     response_data = json.loads(r.text)
 
-    result = []
-    for song in response_data:
-        param = {'id': song['song_id']}
-        r = requests.get(SONGS_MS + '/songs', params=param, headers=headers)
-        if r.status_code == 404:
-            return RESP.response_404(message='Song not found!')
-        if r.status_code == 500:
-            return RESP.response_500(message='Songs_MS is down!')
-        result.append(json.loads(r.text))
+    song_ids = []
+    for dictionary in response_data:
+        song_ids.append(dictionary['song_id'])
 
-    return RESP.response_200(message=result)
+    pool = multiprocessing.Pool(processes=len(song_ids))
+    pool_outputs = pool.map(get_song, song_ids)
+    pool.close()
+    pool.join()
+
+    return RESP.response_200(message=pool_outputs)
+
+
+def get_song(id):
+    """ Retrives a song given an id"""
+    headers = {'Content-Type': 'application/json',
+               'Authorization': request.headers['Authorization']}
+    param = {'id': id}
+    r = requests.get(SONGS_MS + '/songs', params=param, headers=headers)
+    if r.status_code == 404:
+        return RESP.response_404(message='Song not found!')
+    if r.status_code == 500:
+        return RESP.response_500(message='Songs_MS is down!')
+
+    return json.loads(r.text)

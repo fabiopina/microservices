@@ -5,7 +5,7 @@ import scripts.utils as util
 # 2018-05-26 15:02:52.945 LEAVING GET 172.18.0.7 52370 http://zuul:4000/playlists-ms/playlists/songs/1 /playlists-ms http://55e6783ec759:5002/playlists/songs/1
 
 list_file = []
-with open("EventSequence.txt") as f:
+with open("../EventSequence.txt") as f:
     for line in f:
         words = line.split()
         list_file.append([util.get_date(words[0] + " " + words[1]), words[2],
@@ -13,7 +13,7 @@ with open("EventSequence.txt") as f:
 f.close()
 
 
-with open('Data.csv', 'w') as f:
+with open('../Data.csv', 'w') as f:
     f.write('microservice, begin request time, end request time, client ip, client port, function, microservice instance\n')
     for row in list_file:
         if row[1] == 'INCOMING':
