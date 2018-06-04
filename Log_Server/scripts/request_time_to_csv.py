@@ -14,13 +14,15 @@ f.close()
 
 
 with open('../Data.csv', 'w') as f:
-    f.write('microservice, begin request time, end request time, client ip, client port, function, microservice instance\n')
+    id = 1
+    f.write('id,microservice,begin_request_time,end_request_time,client_ip,client_port,function_called,microservice_instance\n')
     for row in list_file:
         if row[1] == 'INCOMING':
             for row_again in list_file:
                 if row_again[8] == 'NO' and util.is_the_response_request(row, row_again):
-                    f.write(row_again[6][1:] + ", " + str(row[0]) + ", " + str(row_again[0]) + ", " + row_again[3] + ", " + row_again[4] + ", " + util.get_function(row_again[2], row_again[5]) + ", " + util.get_instance(row_again[7]) + "\n")
+                    f.write(str(id) + "," + row_again[6][1:] + "," + row[0].strftime("%y-%m-%d %H:%M:%S.%f") + "," + row_again[0].strftime("%y-%m-%d %H:%M:%S.%f") + "," + row_again[3] + "," + row_again[4] + "," + util.get_function(row_again[2], row_again[5]) + "," + util.get_instance(row_again[7]) + "\n")
                     row_again[8] = 'YES'
+                    id = id + 1
                     break
 f.close()
 
