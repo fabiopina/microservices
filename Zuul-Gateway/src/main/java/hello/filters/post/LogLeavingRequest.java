@@ -53,7 +53,7 @@ public class LogLeavingRequest extends ZuulFilter {
         // 7th -> Microservice called
         // 8th -> Microservice instance called
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String message = String.format("%s %s %s %s %s %s %s %s", timestamp.toString(), "LEAVING", request.getMethod(), request.getRemoteAddr(), request.getRemotePort(), request.getRequestURL().toString(), ctx.getZuulRequestHeaders().get("x-forwarded-prefix"), ((IResponse) ctx.get("ribbonResponse")).getRequestedURI());
+        String message = String.format("%s %s %s %s %s %s %s %s %s", timestamp.toString(), "LEAVING", request.getMethod(), request.getRemoteAddr(), request.getRemotePort(), request.getRequestURL().toString(), ctx.getZuulRequestHeaders().get("x-forwarded-prefix"), ((IResponse) ctx.get("ribbonResponse")).getRequestedURI(), request.getRemoteHost());
 
         log.info(message);
         queue.add(message);
