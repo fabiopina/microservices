@@ -37,6 +37,23 @@ paths:
           description: "Bad request."
         500:
           description: "Internal server error."
+  /db:
+    get:
+      operationId: application.write_to_database
+      summary: "Write logs to database!"
+      tags: [Log_Server]
+      responses:
+        200:
+          description: OK
+  /csv:
+    get:
+      operationId: application.write_to_csv
+      summary: "Write logs to csv!"
+      tags: [Log_Server]
+      responses:
+        200:
+          description: OK
+
 
 definitions:
   Log:

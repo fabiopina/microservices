@@ -1,4 +1,6 @@
 import business.response_handling as RESP
+import scripts.request_time_to_database as DB
+import scripts.request_time_to_csv as CSV
 
 
 def hello_world():
@@ -11,3 +13,13 @@ def create_log_entry(body):
         file.write(body['message']+"\n")
 
     return RESP.response_200(message='Log written with success!')
+
+
+def write_to_database():
+    DB.run()
+    return RESP.response_200()
+
+
+def write_to_csv():
+    CSV.run()
+    return RESP.response_200()
