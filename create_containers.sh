@@ -57,5 +57,28 @@ cd Users_MS
 docker build -t users-ms .
 cd ..
 
+# Upload images to docker hub
+docker tag zuul-gateway:latest fabiopina151/microservices:zuul-gateway
+docker push fabiopina151/microservices:zuul-gateway
+
+docker tag eureka-server:latest fabiopina151/microservices:eureka-server
+docker push fabiopina151/microservices:eureka-server
+
+docker tag aggr-ms:latest fabiopina151/microservices:aggr-ms
+docker push fabiopina151/microservices:aggr-ms
+
+docker tag auth-ms:latest fabiopina151/microservices:auth-ms
+docker push fabiopina151/microservices:auth-ms
+
+docker tag playlists-ms:latest fabiopina151/microservices:playlists-ms
+docker push fabiopina151/microservices:playlists-ms
+
+docker tag songs-ms:latest fabiopina151/microservices:songs-ms
+docker push fabiopina151/microservices:songs-ms
+
+docker tag users-ms:latest fabiopina151/microservices:users-ms
+docker push fabiopina151/microservices:users-ms
+
+
 
 

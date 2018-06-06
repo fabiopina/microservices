@@ -4,6 +4,7 @@ import business.response_handling as RESP
 from business.auth import requires_auth
 from pydub import AudioSegment
 import socket
+import time
 
 
 def hello_world():
@@ -27,6 +28,7 @@ def create_song(body):
     if song is None:
         return RESP.response_500(message='Error adding song into database!')
 
+    time.sleep(0.5)
     return RESP.response_201(message='Song created with success!')
 
 
@@ -125,7 +127,7 @@ def convert_song(id):
     """ Converts a song from .mp3 to .wav"""
     logging.debug("{songs_controller} BEGIN function convert_song()")
 
-    if id is '':
+    """if id is '':
         return RESP.response_400(message='The id parameter is empty!')
 
     try:
@@ -145,6 +147,7 @@ def convert_song(id):
         new_path = song.path.replace(".mp3", ".wav")
         sound.export(new_path, format="wav")
     except Exception:
-        return RESP.response_500(message='Error converting song!')
+        return RESP.response_500(message='Error converting song!')"""
+    time.sleep(3)
 
     return RESP.response_200(message='Song converted with success')
