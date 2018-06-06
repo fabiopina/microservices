@@ -33,6 +33,10 @@ def get_instance(uri):
     return words[2]
 
 
+def get_milliseconds(timedelta):
+    return timedelta.days * 86400000 + timedelta.seconds * 1000 + timedelta.microseconds / 1000
+
+
 
 
 

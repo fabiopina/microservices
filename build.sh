@@ -11,12 +11,19 @@ docker rm microservices_eureka_1
 
 # Delete images
 docker rmi users-ms
+docker rmi fabiopina151/microservices:users-ms
 docker rmi songs-ms
+docker rmi fabiopina151/microservices:songs-ms
 docker rmi playlists-ms
+docker rmi fabiopina151/microservices:playlists-ms
 docker rmi aggr-ms
+docker rmi fabiopina151/microservices:aggr-ms
 docker rmi auth-ms
+docker rmi fabiopina151/microservices:auth-ms
 docker rmi eureka-server
+docker rmi fabiopina151/microservices:eureka-server
 docker rmi zuul-gateway
+docker rmi fabiopina151/microservices:zuul-gateway
 
 # Zuul
 cd Zuul-Gateway

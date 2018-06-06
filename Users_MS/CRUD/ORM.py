@@ -4,18 +4,19 @@ import time
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
+import configparser
 
 # Logging configuration
 logging.basicConfig(datefmt='%d/%m/%Y %I:%M:%S', level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
 
+config = configparser.ConfigParser()
+config.read("config.ini")
 
-# TODO: Sensitive information ºº
-DATABASE = 'Users_MS'
-TABLE = 'users'
-USER = 'root'
-PASSWORD = 'ribeiro'
+DATABASE = config.get('MySQL', 'db_name')
+TABLE = config.get('MySQL', 'table')
+USER = config.get('MySQL', 'user')
+PASSWORD = config.get('MySQL', 'password')
 HOST = os.environ['DATABASEADDRESS']
-# TODO: Sensitive information ºº
 
 # app is the object for flask managent
 app = Flask(__name__)
