@@ -57,6 +57,11 @@ cd Users_MS
 docker build -t users-ms .
 cd ..
 
+# Log-Server
+cd Log_Server
+docker build -t log-server .
+cd ..
+
 # Upload images to docker hub
 docker tag zuul-gateway:latest fabiopina151/microservices:zuul-gateway
 docker push fabiopina151/microservices:zuul-gateway
@@ -78,6 +83,9 @@ docker push fabiopina151/microservices:songs-ms
 
 docker tag users-ms:latest fabiopina151/microservices:users-ms
 docker push fabiopina151/microservices:users-ms
+
+docker tag log-server:latest fabiopina151/microservices:log-server
+docker push fabiopina151/microservices:log-server
 
 
 

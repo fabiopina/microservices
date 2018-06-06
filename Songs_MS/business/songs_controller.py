@@ -5,6 +5,7 @@ from business.auth import requires_auth
 from pydub import AudioSegment
 import socket
 import time
+import random
 
 
 def hello_world():
@@ -28,7 +29,7 @@ def create_song(body):
     if song is None:
         return RESP.response_500(message='Error adding song into database!')
 
-    time.sleep(0.5)
+    time.sleep(random.expovariate(3))
     return RESP.response_201(message='Song created with success!')
 
 
@@ -148,6 +149,6 @@ def convert_song(id):
         sound.export(new_path, format="wav")
     except Exception:
         return RESP.response_500(message='Error converting song!')"""
-    time.sleep(3)
+    time.sleep(random.expovariate(3/2))
 
     return RESP.response_200(message='Song converted with success')
