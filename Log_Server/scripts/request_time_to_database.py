@@ -19,10 +19,13 @@ def run():
     cursor = db.cursor()
 
     # create table
-    cursor.execute("""CREATE TABLE IF NOT EXISTS info_teste(
+    cursor.execute("""CREATE TABLE IF NOT EXISTS info_teste1(
         id INT,
-        begin_request_time VARCHAR(255),
-        end_request_time VARCHAR(255),
+        begin_request_time_string VARCHAR(255),
+        begin_request_time_timestamp TIMESTAMP(6),
+        end_request_time_string VARCHAR(255),
+        end_request_time_timestamp TIMESTAMP(6),
+        request_time INT,
         source_ip VARCHAR(255),
         source_port INT,
         destiny_microservice VARCHAR(255),
@@ -37,14 +40,9 @@ def run():
         if row[1] == 'INCOMING':
             for row_again in list_file:
                 if row_again[9] == 'NO' and util.is_the_response_request(row, row_again):
-                    """cursor.execute(
-                        'INSERT INTO info (id, microservice, begin_request_time, end_request_time, client_ip, client_port, function_called, microservice_instance) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',
-                        (str(id), row_again[6][1:], row[0], row_again[0], row_again[3], row_again[4],
-                         util.get_function(row_again[2], row_again[5]), util.get_instance(row_again[7])))"""
-
                     cursor.execute(
-                        'INSERT INTO info_teste (id, begin_request_time, end_request_time, source_ip, source_port, destiny_microservice, destiny_instance, destiny_ip, destiny_function) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-                        (str(id), row[0], row_again[0], row_again[3], row_again[4], row_again[6][1:], util.get_instance(row_again[7]), row_again[8], util.get_function(row_again[2], row_again[5])))
+                        'INSERT INTO info_teste1 (id, begin_request_time_string, begin_request_time_timestamp, end_request_time_string, end_request_time_timestamp, request_time, source_ip, source_port, destiny_microservice, destiny_instance, destiny_ip, destiny_function) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+                        (str(id), row[0], row_again[0], row_again[0], row_again[3], row_again[3], row_again[3] - row_again[0], row_again[4], row_again[6][1:], util.get_instance(row_again[7]), row_again[8], util.get_function(row_again[2], row_again[5])))
                     row_again[9] = 'YES'
                     id = id + 1
                     break
