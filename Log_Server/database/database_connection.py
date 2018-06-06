@@ -1,12 +1,13 @@
 import mysql.connector as conn
 import configparser
+import os
 
 config = configparser.ConfigParser()
 config.read("config.ini")
 
 
 def connect():
-    host = config.get('MySQL', 'host')
+    host = os.environ['DATABASEADDRESS']
     user = config.get('MySQL', 'user')
     password = config.get('MySQL', 'password')
     database = config.get('MySQL', 'db_name')
