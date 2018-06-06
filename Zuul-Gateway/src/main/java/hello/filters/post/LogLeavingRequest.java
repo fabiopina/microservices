@@ -10,6 +10,7 @@ import hello.http.RequestQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetAddress;
 import java.sql.Timestamp;
 
 public class LogLeavingRequest extends ZuulFilter {
@@ -44,6 +45,19 @@ public class LogLeavingRequest extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
+        String s = ((IResponse) ctx.get("ribbonResponse")).getRequestedURI().toString();
+        String[] parts = s.split(":");
+        String host = parts[1].substring(2);
+        String ip = null;
+
+        try{
+            InetAddress addr = InetAddress.getByName(host);
+            ip = addr.getHostAddress();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         // 1st -> Timestamp
         // 2nd -> Type
         // 3rd -> Method
@@ -51,9 +65,13 @@ public class LogLeavingRequest extends ZuulFilter {
         // 5th -> Client port
         // 6th -> URL used by client
         // 7th -> Microservice called
-        // 8th -> Microservice instance called
+        // 8th -> Microservice hostname
+        // 9th -> Microservice ip address
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String message = String.format("%s %s %s %s %s %s %s %s %s", timestamp.toString(), "LEAVING", request.getMethod(), request.getRemoteAddr(), request.getRemotePort(), request.getRequestURL().toString(), ctx.getZuulRequestHeaders().get("x-forwarded-prefix"), ((IResponse) ctx.get("ribbonResponse")).getRequestedURI(), request.getRemoteHost());
+        String message = String.format("%s %s %s %s %s %s %s %s %s", timestamp.toString(), "LEAVING", request.getMethod(), request.getRemoteAddr(), request.getRemotePort(), request.getRequestURL().toString(), ctx.getZuulRequestHeaders().get("x-forwarded-prefix"), ((IResponse) ctx.get("ribbonResponse")).getRequestedURI(), ip);
+
+
+
 
         log.info(message);
         queue.add(message);
