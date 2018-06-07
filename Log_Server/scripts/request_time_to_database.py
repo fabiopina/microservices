@@ -22,10 +22,8 @@ def run():
     # create table
     cursor.execute("""CREATE TABLE IF NOT EXISTS info(
         id INT,
-        begin_request_time_string VARCHAR(255),
-        begin_request_time_timestamp TIMESTAMP(6),info_teste
-        end_request_time_string VARCHAR(255),
-        end_request_time_timestamp TIMESTAMP(6),
+        begin_request_time VARCHAR(255),
+        end_request_time VARCHAR(255),
         request_time_in_milliseconds FLOAT,
         source_ip VARCHAR(255),
         source_port INT,
@@ -42,8 +40,8 @@ def run():
             for row_again in list_file:
                 if row_again[9] == 'NO' and util.is_the_response_request(row, row_again):
                     cursor.execute(
-                        'INSERT INTO info (id, begin_request_time_string, begin_request_time_timestamp, end_request_time_string, end_request_time_timestamp, request_time_in_milliseconds, source_ip, source_port, destiny_microservice, destiny_instance, destiny_ip, destiny_function) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-                        (str(id), row[0], row[0], row_again[0], row_again[0], util.get_milliseconds(row_again[0] - row[0]), row_again[3], row_again[4], row_again[6][1:], util.get_instance(row_again[7]), row_again[8], util.get_function(row_again[2], row_again[5])))
+                        'INSERT INTO info (id, begin_request_time, end_request_time, request_time_in_milliseconds, source_ip, source_port, destiny_microservice, destiny_instance, destiny_ip, destiny_function) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+                        (str(id), row[0], row_again[0], util.get_milliseconds(row_again[0] - row[0]), row_again[3], row_again[4], row_again[6][1:], util.get_instance(row_again[7]), row_again[8], util.get_function(row_again[2], row_again[5])))
                     row_again[9] = 'YES'
                     id = id + 1
                     break
