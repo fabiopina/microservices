@@ -15,14 +15,6 @@ AUTH_MS = "http://" + os.environ['AUTHADDRESS']
 
 
 def hello_world():
-    stuff_that_needs_getting = [1, 2, 3]
-
-    pool = multiprocessing.Pool(processes=3)
-    pool_outputs = pool.map(get_song, stuff_that_needs_getting)
-    pool.close()
-    pool.join()
-    print(pool_outputs)
-
     return RESP.response_200(message='Aggregator_MS working! -> Host: ' + socket.gethostname())
 
 
