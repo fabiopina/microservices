@@ -6,8 +6,8 @@ services:
       - "8761"
   zuul:
     image: fabiopina151/microservices:zuul-gateway
-    expose:
-      - "4000"
+    ports:
+      - "4000:80"
     links:
       - eureka
     environment:
