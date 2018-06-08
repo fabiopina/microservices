@@ -2,7 +2,7 @@
 FROM openjdk:8-jdk-alpine
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+EXPOSE 4000
 
 ADD /target/ZuulGateway.jar ZuulGateway.jar
 
