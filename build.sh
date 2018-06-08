@@ -8,6 +8,7 @@ docker rm microservices_users_1
 docker rm microservices_songs_1
 docker rm microservices_zuul_1
 docker rm microservices_eureka_1
+docker rm microservices_log-server_1
 
 # Delete images
 docker rmi users-ms
@@ -24,6 +25,8 @@ docker rmi eureka-server
 docker rmi fabiopina151/microservices:eureka-server
 docker rmi zuul-gateway
 docker rmi fabiopina151/microservices:zuul-gateway
+docker rmi log-server
+docker rmi fabiopina151/microservices:log-server
 
 # Zuul
 cd Zuul-Gateway

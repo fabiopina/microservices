@@ -9,7 +9,7 @@ services:
     expose:
       - "4000"
     ports:
-      - "4000:4000"
+      - "8080:4000"
     links:
       - eureka
     environment:

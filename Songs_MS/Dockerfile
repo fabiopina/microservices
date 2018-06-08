@@ -10,14 +10,8 @@ ADD . /app/
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV DATABASEADDRESS 10.0.2.15:3306
-ENV PYTHONPATH /app/
-ENV EUREKA_SERVICE_URL 10.0.2.15:8761
-ENV EUREKA_INSTANCE_PORT 5001
+# Make port 5001 available to the world outside this container
+EXPOSE 5001
 
 # Run app.py when the container launches
 CMD ["python", "application.py"]
