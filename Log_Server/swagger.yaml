@@ -40,19 +40,38 @@ paths:
   /db:
     get:
       operationId: application.write_to_database
-      summary: "Write logs to database!"
+      summary: "Write parsed logs into database!"
       tags: [Log_Server]
       responses:
         200:
-          description: OK
+          description: "OK"
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error."
   /csv:
     get:
       operationId: application.write_to_csv
-      summary: "Write logs to csv!"
+      summary: "Write parsed logs into csv!"
       tags: [Log_Server]
       responses:
         200:
-          description: OK
+          description: "OK"
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error."
+    delete:
+      operationId: application.delete_files
+      summary: "Delete EventSequence.txt and 'Data.csv'!"
+      tags: [Log_Server]
+      responses:
+        200:
+          description: "OK"
+        400:
+          description: "Bad request."
+        500:
+          description: "Internal server error."
 
 
 definitions:
