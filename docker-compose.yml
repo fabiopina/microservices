@@ -13,16 +13,8 @@ services:
     links:
       - eureka
     environment:
-      - LOGSERVERADDRESS=log-server:4040
+      - LOGSERVERADDRESS=10.0.2.15:4040
       - EUREKA=eureka:8761
-  log-server:
-    image: fabiopina151/microservices:log-server
-    expose:
-      - "4040"
-    links:
-      - zuul
-    environment:
-      - DATABASEADDRESS=192.168.1.32
   ms-db:
     image: mariadb
     expose:
