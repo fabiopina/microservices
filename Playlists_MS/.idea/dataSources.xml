@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Playlists_MS@localhost" uuid="9379dd62-d88d-4685-8a23-0e324b73e40a">
+    <data-source source="LOCAL" name="Playlists_MS@172.18.0.3" uuid="c17fc922-4f4e-455e-a60b-ed7fcd3ca88a">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:6000/Playlists_MS</jdbc-url>
+      <jdbc-url>jdbc:mysql://172.18.0.3:3306/Playlists_MS</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

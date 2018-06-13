@@ -14,7 +14,7 @@ def run():
                               words[3], words[4], words[5], words[6], words[7], words[8], words[9], "NO"])
     f.close()
 
-    with open('Data.csv', 'w') as f:
+    with open(Data.csv', 'w') as f:
         id = 1
         f.write('id,begin_request_time,end_request_time,request_time_in_milliseconds,source_ip,source_port,destiny_microservice,destiny_instance,destiny_ip,destiny_function\n')
         for row in list_file:
