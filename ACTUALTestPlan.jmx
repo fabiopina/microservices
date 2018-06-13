@@ -16,10 +16,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">120</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -49,8 +49,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">users-ms/users</stringProp>
@@ -124,8 +124,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">auth-ms/login</stringProp>
@@ -204,8 +204,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">users-ms/users</stringProp>
@@ -287,8 +287,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">users-ms/users/${id_user}</stringProp>
@@ -370,8 +370,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">songs-ms/songs</stringProp>
@@ -447,8 +447,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">songs-ms/songs/criteria</stringProp>
@@ -532,8 +532,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">songs-ms/songs/${id_song}</stringProp>
@@ -601,8 +601,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">songs-ms/songs/convert/${id_song}</stringProp>
@@ -676,8 +676,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">playlists-ms/playlists</stringProp>
@@ -753,8 +753,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">playlists-ms/playlists</stringProp>
@@ -834,8 +834,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">playlists-ms/playlists/${id_playlist}</stringProp>
@@ -913,8 +913,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">playlists-ms/playlists/songs/${id_playlist}</stringProp>
@@ -982,8 +982,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">playlists-ms/playlists/songs/${id_playlist}</stringProp>
@@ -1062,8 +1062,8 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">playlists-ms/playlists/songs/${id_playlist}</stringProp>
@@ -1127,8 +1127,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">playlists-ms/playlists/${id_playlist}</stringProp>
@@ -1192,8 +1192,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">songs-ms/songs/${id_song}</stringProp>
@@ -1257,8 +1257,8 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">172.18.0.4</stringProp>
-          <stringProp name="HTTPSampler.port">4000</stringProp>
+          <stringProp name="HTTPSampler.domain">pina.powertrip.pt</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">users-ms/users/${id_user}</stringProp>
