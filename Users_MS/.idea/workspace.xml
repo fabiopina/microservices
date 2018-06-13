@@ -127,6 +127,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -148,14 +149,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;SQL Server (Microsoft)" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Aggregator_MS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -290,8 +290,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32982087" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32982087" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="9" visible="true" weight="0.32900432" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21361372" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21582733" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.23298284" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -305,6 +304,7 @@
       <window_info anchor="right" id="Data View" order="4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Database Console" order="9" visible="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
@@ -315,6 +315,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="das://6e4d1165-20a3-41fa-8e46-17bbedbf3bf4/schema/Users_MS/table/users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CRUD/ORM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -503,9 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask_eureka/hostinfo.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/flask_eureka/eureka.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -569,16 +573,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://9a2e83f6-45fd-4503-9dd6-c1d825b955a6/schema/Users_MS/table/users">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6e4d1165-20a3-41fa-8e46-17bbedbf3bf4/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="das://9a2e83f6-45fd-4503-9dd6-c1d825b955a6/schema/Users_MS/table/users" />
     <entry file="das://6e4d1165-20a3-41fa-8e46-17bbedbf3bf4/schema/Users_MS/table/users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
